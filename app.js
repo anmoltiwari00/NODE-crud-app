@@ -9,13 +9,9 @@ let port = process.env.PORT || 8080;
 let mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-
-
-
 mongoose.connect('mongodb://crudappappler:nodeapp@ds157325.mlab.com:57325/prokriya-crud-app');
 
 let index = require('./routes/index');
-let users = require('./routes/users');
 let employees = require('./routes/employees');
 
 app.set('views',path.join(__dirname, 'views'));
@@ -27,7 +23,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/', index);
-app.use('/users', users);
 app.use('/employees', employees);
 
 

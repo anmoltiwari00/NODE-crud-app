@@ -63,12 +63,12 @@ employeeController.edit = (req, res) => {
 
 
 employeeController.update = (req, res) => {
-  Employee.findByIdAndUpdate(req.params.id, { $set: { name: req.body.name, address: req.body.address, position: req.body.position, salary: req.body.salary }}, { new: true },  (err, employee) => {
+  Employee.findByIdAndUpdate(req.params.id, { $set: { name: req.body.name, address: req.body.address, position: req.body.position, salary: req.body.salary }}, (err, employee) => {
     if (err) {
       console.log(err);
       res.render("../views/employees/edit", {employee: req.body});
     }
-    res.redirect("/employees/show/"+employee._id);
+    res.redirect("/employees");
   });
 };
 
